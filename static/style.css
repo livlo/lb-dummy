@@ -1,0 +1,20 @@
+.circle {
+    background: lightblue;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}
+
+.dot{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    color: white;
+}
+
+.message{
+    color:red;
+    font-size: smaller;
+}
