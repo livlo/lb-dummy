@@ -1,0 +1,53 @@
+detail_id,trx_id,vendor,item,qty,amount
+1,TR0001,McDonalds,Burger,3,30000
+2,TR0001,McDonalds,Kentang,1,10000
+3,TR0002,bakso jawir,bakso urat,1,15000
+4,TR0002,bakso jawir,bakso polos,1,10000
+5,TR0002,tokobajuku,baju merah,1,50000
+6,TR0003,toko komputer,hdd,1,500000
+7,TR0003,toko komputer,ssd,1,700000
+8,TR0004,air asia,tiket PP Jakarta Bali,1,1500000
+9,TR0005,bakso jawir,bakso urat,1,15000
+10,TR0005,bakso jawir,bakso polos,1,10000
+11,TR0005,tokobajuku,baju merah,1,50000
+12,TR0006,bakso mamat,bakso urat,1,15000
+13,TR0006,bakso mamat,bakso polos,1,10000
+14,TR0006,tokobajuku,baju merah,1,50000
+15,TR0007,bakso 101,bakso urat,1,15000
+16,TR0007,bakso 101,bakso polos,1,10000
+17,TR0007,tokobajuku,baju merah,1,50000
+20,TR0008,McDonalds,Burger,3,30000
+21,TR0008,McDonalds,Kentang,1,10000
+22,TR0009,wardah,hair remover,1,200000
+23,TR0010,tokokosmetik,hair remover,1,200000
+24,TR0011,mangga dua,laptop,1,15000000
+25,TR0011,mangga dua,memory card,1,150000
+26,TR0012,line,conny doll,3,150000
+27,TR0013,line,brown doll,2,140000
+28,TR0014,wardah,hair grower,1,200000
+29,TR0015,wardah,hair grower,5,200000
+30,TR0016,mangga dua,memory card,5,150000
+31,TR0017,mangga dua,ssd,1,500000
+32,TR0018,bakso jawir,bakso urat,1,15000
+33,TR0018,bakso jawir,bakso polos,1,10000
+34,TR0018,tokobajuku,baju merah,1,50000
+35,TR0019,air asia,PP Jakarta Surabaya,2,1500000
+36,TR0020,air asia,PP Jakarta Surakarta,2,1300000
+37,TR0021,garuda,PP Jakarta Amsterdam,1,1900000
+38,TR0022,garuda,PP Jakarta Bandung,1,1100000
+39,TR0023,line,sally doll,2,150000
+40,TR0024,bakso mamat,bakso urat,1,15000
+41,TR0024,bakso mamat,bakso polos,1,10000
+42,TR0024,tokobajuku,baju merah,1,50000
+43,TR0025,bakso jawir,bakso gede,5,15000
+44,TR0025,bakso jawir,bakso polos,1,10000
+45,TR0025,tokobajuku,baju merah,1,50000
+46,TR0026,mangga dua,ssd,3,1500000
+47,TR0027,mangga dua,ssd,1,3000000
+48,TR0027,mangga dua,gpu,1,1500000
+49,TR0028,channel,black top,1,2000000
+50,TR0029,giordano,white top,1,2500000
+51,TR0030,bakso jawir,bakso polos,1,30000
+52,TR0030,bakso jawir,pangsit,2,15000
+53,TR0031,air asia,tiket pesawat Jakarta Surabaya,1,350000
+54,TR0032,citilink,PP Jakarta Semarang,1,142000

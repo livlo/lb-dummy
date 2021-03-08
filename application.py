@@ -7,8 +7,8 @@ import csv
 import io
 
 
-app = Flask(__name__)
-application = app
+application = Flask(__name__)
+app = application
 
 ENV = 'dev'
 
@@ -250,7 +250,7 @@ def index():
         if row == 0:
             row = 1
 
-        avg_ctor = round(total_ctor/(col*row),2)*100
+        avg_ctor = round(total_ctor/(col*row)*100,2)
 
         return render_template('index.html', users=results, len=len(results), avg_ctor=avg_ctor)
     
@@ -299,7 +299,7 @@ def index():
         
         if row == 0:
             row = 1
-        avg_ctor = round(total_ctor/col,2)*100
+        avg_ctor = round(total_ctor/col*100,2)
 
 
         # ambil data dari input & mapping data" yang penting
@@ -517,7 +517,7 @@ def search():
         
         if row == 0:
             row = 1
-        avg_filtered_ctor = round(total_filtered_ctor/(col*row),2)*100
+        avg_filtered_ctor = round(total_filtered_ctor/(col*row) * 100,2)
 
         return render_template('index.html', users=results_filtered_users, len=len(results_filtered_users), avg_ctor=avg_filtered_ctor)
 
@@ -534,7 +534,6 @@ def export():
     
     #get all filtered users
     if persona != 'all' and media == 'all':
-        print('b')
         filtered_users = db.session.execute("""
         SELECT * 
         FROM users u JOIN interests i
@@ -543,8 +542,6 @@ def export():
         """%(persona))
         
     if persona == 'all' and media != 'all':
-        print('c')
-
         filtered_users = db.session.execute("""
         SELECT * 
         FROM users u JOIN interests i
@@ -553,7 +550,6 @@ def export():
         """%(media))
     
     if persona != 'all' and media != 'all':
-        print('d')
         filtered_users = db.session.execute("""
         SELECT *
         FROM users u JOIN interests i
