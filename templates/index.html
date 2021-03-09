@@ -12,26 +12,25 @@
 </head>
 <body>
     <div class="container-fluid">
-        <!-- <img src="../static/logo.png" alt="Static Logo"> -->
-        <h1>LB DW Simulator</h1>
         <br>
-        {% if message %}
-            <p class="message">*{{ message | safe }}</p>
-        {% endif %}
-        <div class="row" style="height: 90vh;">
+        <div class="row" style="height: 80vh;">
             <div class="left-form col-4" style="border-right: 1px solid black;">
-                <h3>Data Input</h3>
+                <div>
+                    <img src="../static/logo.png" id="logo" alt="Static Logo">
+                </div>
+                <br>
+                <h4>Data Input</h4>
                 <form action="/" method="POST">
                     <table>
                         <tr>
                             <td>User ID</td>
                             <td>:</td>
-                            <td><input type="text" name="user_id" placeholder="LB0001" value="LB0001"></td>
+                            <td><input type="text" id="user_id" name="user_id" placeholder="LB0001" value="LB0001"></td>
                         </tr>
                         <tr>
                             <td>Name</td>
                             <td>:</td>
-                            <td><input type="text" name="name" placeholder="Joko" value="Joko"></td>
+                            <td><input type="text" id="name" name="name" placeholder="Joko" value="Joko"></td>
                         </tr>
                         
                         <tr>
@@ -47,35 +46,38 @@
                         <tr>
                             <td>Email</td>
                             <td>:</td>
-                            <td><input type="text" name="email" placeholder="joko@gmail.com" value="joko@gmail.com"></td>
+                            <td><input type="text" id="email" name="email" placeholder="joko@gmail.com" value="joko@gmail.com"></td>
                         </tr>
                         <tr>
                             <td>Phone</td>
                             <td>:</td>
-                            <td><input type="text" name="phone" placeholder="089620373371" value="089620373371"></td>
+                            <td><input type="text" id="phone" name="phone" placeholder="089620373371" value="089620373371"></td>
                         </tr>
                         <tr>
                             <td>Interest</td>
                             <td>:</td>
-                            <td><textarea type="text" name="interest" placeholder="JSON Format" rows="3" cols="30">{"ctor":{"sms":{"category":{"fnb":0.9,"fashion":0.1,"travel":0.0,"lifestyle":0.0,"electronic":0.0},"acquisition_cost":150000.0},"email":{"category":{"fnb":0.8,"fashion":0.0,"travel":0.0,"lifestyle":0.0,"electronic":0.0},"acquisition_cost":200000.0},"push_notif":{"category":{"fnb":0.4,"fashion":0.0,"travel":0.0,"lifestyle":0.0,"electronic":0.0},"acquisition_cost":100000.0}}}</textarea></td>
+                            <td><textarea type="text" id="interest" name="interest" placeholder="JSON Format" rows="3" cols="30">{"ctor":{"sms":{"category":{"fnb":0.9,"fashion":0.1,"travel":0.0,"lifestyle":0.0,"electronic":0.0},"acquisition_cost":150000.0},"email":{"category":{"fnb":0.8,"fashion":0.0,"travel":0.0,"lifestyle":0.0,"electronic":0.0},"acquisition_cost":200000.0},"push_notif":{"category":{"fnb":0.4,"fashion":0.0,"travel":0.0,"lifestyle":0.0,"electronic":0.0},"acquisition_cost":100000.0}}}</textarea></td>
                         </tr>
                         <tr> 
                             <td>Purchase</td>
                             <td>:</td>
-                            <td><textarea type="text" name="purchase" placeholder="JSON Format" rows="3" cols="30">{"trx_id":"TR0001","details":{"fnb":{"vendor":"bakso jawir","items":{"bakso urat":{"qty":1,"amount":15000.0},"bakso polos":{"qty":1,"amount":10000.0}}},"fashion":{"vendor":"tokobajuku","items":{"baju merah":{"qty":1,"amount":50000.0}}},"travel":{},"lifestyle":{},"electronic":{}}}</textarea></td>
+                            <td><textarea type="text" id="purchase" name="purchase" placeholder="JSON Format" rows="3" cols="30">{"trx_id":"TR0001","details":{"fnb":{"vendor":"bakso jawir","items":{"bakso urat":{"qty":1,"amount":15000.0},"bakso polos":{"qty":1,"amount":10000.0}}},"fashion":{"vendor":"tokobajuku","items":{"baju merah":{"qty":1,"amount":50000.0}}},"travel":{},"lifestyle":{},"electronic":{}}}</textarea></td>
                         </tr>
                     </table>
                     <br>
+                    {% if message %}
+                        <p class="message">*{{ message | safe }}</p>
+                    {% endif %}
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
             <div class="right-form col-8">
-                <h3>Ouput</h3>
+                <h4>Data Ouput</h4>
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-12">
                         <form action="/search">
                             <label for="persona">Filter:</label>
-                            <select name="persona" id="persona">
+                            <select name="persona" id="persona" style="height: 35px;">
                                 <option value="all">All</option>
                                 <option value="fashion">Fashion</option>
                                 <option value="electronic">Electronic</option>
@@ -83,26 +85,34 @@
                                 <option value="travel">Travel</option>
                                 <option value="lifestyle">Lifestyle</option>
                             </select>
-                            <select name="media" id="media">
+                            <select name="media" id="media" style="height: 35px;">
                                 <option value="all">All</option>
                                 <option value="sms">SMS</option>
                                 <option value="email">Email</option>
                                 <option value="push_notif">Push Notif</option>
                             </select>
-                            <input type="submit" value="Search">
-                        </form>
-                    </div>
-                    
-                    <div class="col-3">
-                        <h5 style="text-align: right;">Average CTOR: {{ avg_ctor }}%</h5>
-                    </div>
-                    <div class="col-4" style="text-align: right;">
-                        <form action="/export">
-                            <button type="submit" class="btn btn-success">Export</button>
+                            <button class="btn btn-secondary" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" style="width: 65%;">
+                                <h5 style="text-align: right;">Average CTOR: {{ avg_ctor }}%</h5>
+                            </th>
+                            <th scope="col">
+                                <form action="/export" style="text-align: right;">
+                                    <button type="submit" class="btn btn-success">Export</button>
+                                </form>
+                            </th>
+                            <!-- <th scope="col">Action</th> -->
+                          </tr>
+                        </thead>
+                    </table>
+                </div>
                 <div style="overflow: auto; height: 80vh;">
                     <table class="table">
                         <thead>

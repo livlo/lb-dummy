@@ -18,3 +18,16 @@
     color:red;
     font-size: smaller;
 }
+
+#logo{
+    height: 80px;
+    margin: auto;
+}
+
+#user_id, #name, #gender, #email, #phone, #interest, #purchase{
+    width: 250px;
+}
+
+tr{
+    margin-bottom: 4px;
+}
