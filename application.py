@@ -430,12 +430,13 @@ def show(user_id):
 def search():
     if request.method == 'GET':
         persona = request.args.get('persona')
+        selectedMedia = request.args.get('media')
 
-        if request.args.get('media') == 'sms':
+        if selectedMedia == 'sms':
             media = '1'
-        elif request.args.get('media') == 'email':
+        elif selectedMedia == 'email':
             media = '2'
-        elif request.args.get('media') == 'push_notif':
+        elif selectedMedia == 'push_notif':
             media = '3'
         else:
             media = 'all'
@@ -503,20 +504,40 @@ def search():
                 "ctor_push_notif_electronic":user.ctor_push_notif_electronic
             } for user in filtered_users]
 
-
+        # persona all, selectedMedia all
         results_filtered_ctor = [
-            [v for k, v in results_filtered_users[i].items() if k.startswith('ctor')
-            ] for i in range(len(results_filtered_users))]
-
+                [v for k, v in results_filtered_users[i].items() if k.startswith('ctor')
+                ] for i in range(len(results_filtered_users))]
+        
+        col = 15
         total_filtered_ctor = 0
         row = len(results_filtered_ctor)
-        col = 15
+
+        # persona != all
+        if persona != 'all':
+            results_filtered_ctor = [
+                [v for k, v in results_filtered_users[i].items() if k.startswith('ctor') and (persona in k)
+                ] for i in range(len(results_filtered_users))]
+            col = 3
+
+        elif media != 'all':
+            results_filtered_ctor = [
+                [v for k, v in results_filtered_users[i].items() if k.startswith('ctor') and (selectedMedia in k)
+                ] for i in range(len(results_filtered_users))]
+            col = 3
+
+        if persona != 'all' and media != 'all':
+            results_filtered_ctor = [
+                [v for k, v in results_filtered_users[i].items() if k.startswith('ctor') and (selectedMedia in k) and (persona in k)
+                ] for i in range(len(results_filtered_users))]
+            col = 1
 
         for i in range(row):
             total_filtered_ctor += sum(results_filtered_ctor[i])
         
         if row == 0:
             row = 1
+        
         avg_filtered_ctor = round(total_filtered_ctor/(col*row) * 100,2)
 
         return render_template('index.html', users=results_filtered_users, len=len(results_filtered_users), avg_ctor=avg_filtered_ctor)
